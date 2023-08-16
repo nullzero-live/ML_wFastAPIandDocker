@@ -2,7 +2,8 @@
 FROM python:3.11.2-slim-buster
 
 # set working directory
-WORKDIR /Users/nullzero/Documents/repos/gitlab.com/nullzero-id/testing/tdio-mllive/app
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -21,7 +22,7 @@ RUN pip install -r requirements.txt
 # add app
 COPY . .
 
-# add entrypoint
+# add entrypoint.sh
 COPY ./entrypoint.sh .
 RUN chmod +x /usr/src/app/entrypoint.sh
 
